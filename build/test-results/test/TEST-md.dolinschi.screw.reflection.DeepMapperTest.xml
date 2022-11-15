@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="md.dolinschi.screw.reflection.DeepMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-15T12:15:12" hostname="Nichitas-MacBook-Pro.fritz.box" time="0.013">
+<testsuite name="md.dolinschi.screw.reflection.DeepMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-15T14:10:11" hostname="Nichitas-MacBook-Pro.fritz.box" time="0.017">
   <properties/>
-  <testcase name="testDeepMapping()" classname="md.dolinschi.screw.reflection.DeepMapperTest" time="0.013"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testDeepMapping()" classname="md.dolinschi.screw.reflection.DeepMapperTest" time="0.017"/>
+  <system-out><![CDATA[76324000
+82050000
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

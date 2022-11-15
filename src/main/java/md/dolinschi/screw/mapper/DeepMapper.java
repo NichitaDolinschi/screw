@@ -31,9 +31,12 @@ public class DeepMapper<F, T> extends Mapper<F, T> {
         final var allHierarchyFields = ObjectField.getAllHierarchyFields(reference);
         allHierarchyFields.parallelStream().forEach(referenceField -> {
             try (final var targetField = new ObjectField(target, referenceField.getFieldName(), true)) {
-                if (ClassUtils.isPrimitiveOrWrapper(reference.getClass()) || ClassUtils.isPrimitiveOrWrapper(targetField.getFieldClass()) || referenceField.isAssignableFrom(targetField)) {
+                if (ClassUtils.isPrimitiveOrWrapper(reference.getClass())
+                        || ClassUtils.isPrimitiveOrWrapper(targetField.getFieldClass())
+                        || referenceField.isAssignableFrom(targetField)) {
                     if (referenceField.isCollection()) {
                         if (referenceField.getGenericClass().equals(targetField.getGenericClass())) {
+                            //do copy
                             final var referenceValue = referenceField.getValueAndClose();
                             targetField.setValue(referenceValue);
                         } else {
@@ -69,11 +72,13 @@ public class DeepMapper<F, T> extends Mapper<F, T> {
                 if (targetField.isSubTypeOrEquals(List.class)) {
                     targetField.setValue(ClassUtils.isPrimitiveOrWrapper(referenceField.getGenericClass())
                             ? referenceCollection.parallelStream().toList()
-                            : referenceCollection.parallelStream().map(referenceValue -> DeepMapper.mapOf(referenceValue, Initializer.initializeObject(targetField.getGenericClass()))).toList());
+                            : referenceCollection.parallelStream().map(referenceValue -> DeepMapper.mapOf(referenceValue, Initializer.initializeObject(targetField.getGenericClass())))
+                            .toList());
                 } else if (targetField.isSubTypeOrEquals(Set.class)) {
                     targetField.setValue(ClassUtils.isPrimitiveOrWrapper(referenceField.getGenericClass())
                             ? referenceCollection.parallelStream().collect(Collectors.toSet())
-                            : referenceCollection.parallelStream().map(referenceValue -> DeepMapper.mapOf(referenceValue, Initializer.initializeObject(targetField.getGenericClass()))).collect(Collectors.toSet()));
+                            : referenceCollection.parallelStream().map(referenceValue -> DeepMapper.mapOf(referenceValue, Initializer.initializeObject(targetField.getGenericClass())))
+                            .collect(Collectors.toSet()));
                 }
                 referenceField.close();
             }
