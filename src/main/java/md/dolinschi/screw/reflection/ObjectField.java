@@ -3,10 +3,8 @@ package md.dolinschi.screw.reflection;
 import md.dolinschi.screw.reflection.exception.FieldNotFoundException;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.lang.reflect.ParameterizedType;
+import java.util.*;
 import java.util.function.UnaryOperator;
 
 
@@ -35,6 +33,17 @@ public class ObjectField implements AutoCloseable {
         this.field.setAccessible(true);
     }
 
+    public Class<?> getGenericClass() {
+        try {
+            if (field.getGenericType() instanceof ParameterizedType type) {
+                return (Class<?>) type.getActualTypeArguments()[0];
+            }
+            return null;
+        } catch (final Exception ignored) {
+            return null;
+        }
+    }
+
     public Object getValue() {
         try {
             return field.get(object);
@@ -49,6 +58,18 @@ public class ObjectField implements AutoCloseable {
         } catch (final IllegalAccessException ignored) {
             return null;
         }
+    }
+
+    public Object getValueAndClose() {
+        final var fieldValue = getValue();
+        field.setAccessible(false);
+        return fieldValue;
+    }
+
+    public Object getValueAndClose(UnaryOperator<Object> beforeGet) {
+        final var fieldValue = getValue(beforeGet);
+        field.setAccessible(false);
+        return fieldValue;
     }
 
     public Object setValue(Object value) {
@@ -69,18 +90,6 @@ public class ObjectField implements AutoCloseable {
         }
     }
 
-    public Object getValueAndClose() {
-        final var fieldValue = getValue();
-        field.setAccessible(false);
-        return fieldValue;
-    }
-
-    public Object getValueAndClose(UnaryOperator<Object> beforeGet) {
-        final var fieldValue = getValue(beforeGet);
-        field.setAccessible(false);
-        return fieldValue;
-    }
-
     public Object setValueAndClose(Object value) {
         final var fieldValue = setValue(value);
         field.setAccessible(false);
@@ -93,10 +102,22 @@ public class ObjectField implements AutoCloseable {
         return fieldValue;
     }
 
+    public boolean isCollection() {
+        return Collection.class.isAssignableFrom(getFieldClass()) || Map.class.isAssignableFrom(getFieldClass());
+    }
 
     public boolean isAssignableFrom(ObjectField target) {
         return getFieldClass().equals(target.getFieldClass());
     }
+
+    public boolean isSubType(Class<?> aClass) {
+        return getFieldClass().isAssignableFrom(aClass);
+    }
+
+    public boolean isSubTypeOrEquals(Class<?> aClass) {
+        return isSubType(aClass) || getFieldClass().equals(aClass);
+    }
+
 
     public Class<?> getObjectClass() {
         return objectClass;

@@ -4,21 +4,14 @@ import md.dolinschi.screw.reflection.ObjectField;
 
 import java.util.function.Supplier;
 
-public class SimpleMapper<F, T> implements Mapper<T> {
+public class SimpleMapper<F, T> extends Mapper<F, T> {
 
-    private final F reference;
-    private final T target;
-
-    public SimpleMapper(final F reference, final T target) {
-        if (reference == null || target == null) {
-            throw new NullPointerException();
-        }
-        this.reference = reference;
-        this.target = target;
+    public SimpleMapper(F reference, T target) {
+        super(reference, target);
     }
 
-    public SimpleMapper(final F reference, final Supplier<T> target) {
-        this(reference, target.get());
+    public SimpleMapper(F reference, Supplier<T> target) {
+        super(reference, target);
     }
 
     public static <F, T> T mapOf(final F reference, final T target) {

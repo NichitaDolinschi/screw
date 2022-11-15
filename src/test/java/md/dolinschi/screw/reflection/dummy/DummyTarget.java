@@ -1,6 +1,8 @@
 package md.dolinschi.screw.reflection.dummy;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class DummyTarget {
     private int integer;
@@ -8,7 +10,37 @@ public class DummyTarget {
     private String string;
     private DummyTarget dummyReference;
 
+    private List<Integer> ints;
+
+    private List<DummyInnerTarget> dummyInnerReferenceList;
+
+    private Set<Integer> toSet;
+
+    public Set<Integer> getToSet() {
+        return toSet;
+    }
+
+    public void setToSet(Set<Integer> toSet) {
+        this.toSet = toSet;
+    }
+
     public DummyTarget() {
+    }
+
+    public List<Integer> getInts() {
+        return ints;
+    }
+
+    public void setInts(List<Integer> ints) {
+        this.ints = ints;
+    }
+
+    public List<DummyInnerTarget> getDummyInnerReferenceList() {
+        return dummyInnerReferenceList;
+    }
+
+    public void setDummyInnerReferenceList(List<DummyInnerTarget> dummyInnerReferenceList) {
+        this.dummyInnerReferenceList = dummyInnerReferenceList;
     }
 
     public DummyTarget(int integer, boolean aBoolean, String string, DummyTarget dummyReference) {
