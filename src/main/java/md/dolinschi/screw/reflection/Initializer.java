@@ -1,6 +1,6 @@
-package md.dolinschi.screwy.reflection;
+package md.dolinschi.screw.reflection;
 
-import md.dolinschi.screwy.reflection.exception.NoArgsConstructorMissingException;
+import md.dolinschi.screw.reflection.exception.NoArgsConstructorMissingException;
 
 public class Initializer {
 

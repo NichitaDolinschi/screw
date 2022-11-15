@@ -1,4 +1,4 @@
-package md.dolinschi.screwy.reflection.dummy;
+package md.dolinschi.screw.reflection.dummy;
 
 public class DummyReference {
     private int integer;

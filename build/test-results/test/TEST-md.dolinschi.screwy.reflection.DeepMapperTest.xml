@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="md.dolinschi.screwy.reflection.DeepMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-15T09:21:55" hostname="Nichitas-MacBook-Pro.fritz.box" time="0.011">
-  <properties/>
-  <testcase name="testDeepMapping()" classname="md.dolinschi.screwy.reflection.DeepMapperTest" time="0.011"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

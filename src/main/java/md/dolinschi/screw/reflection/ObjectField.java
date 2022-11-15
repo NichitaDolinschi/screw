@@ -1,6 +1,6 @@
-package md.dolinschi.screwy.reflection;
+package md.dolinschi.screw.reflection;
 
-import md.dolinschi.screwy.reflection.exception.FieldNotFoundException;
+import md.dolinschi.screw.reflection.exception.FieldNotFoundException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

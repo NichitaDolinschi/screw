@@ -1,4 +1,4 @@
-package md.dolinschi.screwy.reflection.exception;
+package md.dolinschi.screw.reflection.exception;
 
 
 public class NoArgsConstructorMissingException extends RuntimeException {

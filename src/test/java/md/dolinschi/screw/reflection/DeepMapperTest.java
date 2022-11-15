@@ -1,8 +1,8 @@
-package md.dolinschi.screwy.reflection;
+package md.dolinschi.screw.reflection;
 
-import md.dolinschi.screwy.mapper.DeepMapper;
-import md.dolinschi.screwy.reflection.dummy.DummyReference;
-import md.dolinschi.screwy.reflection.dummy.DummyTarget;
+import md.dolinschi.screw.mapper.DeepMapper;
+import md.dolinschi.screw.reflection.dummy.DummyReference;
+import md.dolinschi.screw.reflection.dummy.DummyTarget;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

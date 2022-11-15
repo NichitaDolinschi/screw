@@ -1,4 +1,4 @@
-package md.dolinschi.screwy.mapper;
+package md.dolinschi.screw.mapper;
 
 
 public interface Mapper<T> {

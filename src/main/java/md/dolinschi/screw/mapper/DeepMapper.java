@@ -1,7 +1,7 @@
-package md.dolinschi.screwy.mapper;
+package md.dolinschi.screw.mapper;
 
-import md.dolinschi.screwy.reflection.Initializer;
-import md.dolinschi.screwy.reflection.ObjectField;
+import md.dolinschi.screw.reflection.Initializer;
+import md.dolinschi.screw.reflection.ObjectField;
 import org.apache.commons.lang3.ClassUtils;
 
 import java.util.function.Supplier;
